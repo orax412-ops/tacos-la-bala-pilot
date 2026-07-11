@@ -1,15 +1,13 @@
-/* Tacos La Bala — Design DNA
-   Mood: bold red channel-letter taqueria signage at night, dark charcoal storefront,
-   mustard sombrero warmth. Playful but built like real signage, not a taco-truck cliche.
-   Color: warm charcoal canvas (hue 35, NOT the cool blue-charcoal used elsewhere in this
-   batch), true channel-letter red + mustard/sombrero gold, cream ink.
-   Type: Alfa Slab One (display, mimics extruded block channel letters) + Archivo (body,
-   geometric grotesque) + JetBrains Mono (tabular price numerals only).
-   Layout: asymmetric 70/30 hero (headline left, channel-sign panel bleeding off the right
-   edge) on home; fixed category rail on the menu page (most content-heavy page in the batch).
-   Motion: quick, snappy eases on hover, no bounce.
-   Signature element: papel picado (cut-paper banner) divider strung between sections,
-   built from clip-path + mask flags, reused across all three pages.
+/* Tacos La Bala — Design DNA (v2, corrected to real brand)
+   Mood: authentic taqueria — deep red talavera-tile storefront wall, bold white rounded
+   logotype, a bullet-shaped mascot in a red hat and boots (the name IS "the bullet").
+   Color: true taqueria red as the dominant canvas (not a dark charcoal backdrop), mustard
+   gold + cactus green as festive accents, warm charcoal reserved for contrast panels only.
+   Type: Baloo 2 (display, chunky rounded weight — matches the real hand-painted sign
+   lettering) + Archivo (body) + JetBrains Mono (tabular price numerals only).
+   Pattern: talavera diamond-lattice texture on red sections, echoing the real storefront wall.
+   Signature element: bullet mascot (hat + mustache + boots on a bullet-shaped body, arms out
+   holding tacos) + papel picado banner dividers.
 */
 
 :root {
@@ -21,9 +19,15 @@
   --ink-faint: oklch(62% 0.02 75);
   --red: oklch(52% 0.19 25);
   --red-dark: oklch(38% 0.16 25);
+  --red-deep: oklch(30% 0.15 25);
   --red-shadow: oklch(15% 0.02 35);
   --mustard: oklch(76% 0.15 75);
   --mustard-dark: oklch(60% 0.15 65);
+  --green: oklch(55% 0.13 148);
+  --green-dark: oklch(40% 0.1 148);
+  --cream: oklch(95% 0.02 85);
+  --silver: oklch(88% 0.01 80);
+  --silver-shadow: oklch(72% 0.015 80);
   --line: oklch(36% 0.03 40);
 }
 
@@ -33,14 +37,40 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Archivo', sans-serif;
-  background: var(--canvas);
+  background:
+    radial-gradient(circle at 1px 1px, oklch(30% 0.03 35 / 0.5) 1.4px, transparent 1.4px) 0 0/26px 26px,
+    var(--canvas);
   color: var(--ink);
   line-height: 1.6;
 }
 
+/* ---- Talavera diamond-lattice texture, for red sections ---- */
+.talavera {
+  background-color: var(--red-deep);
+  background-image:
+    repeating-linear-gradient(45deg, oklch(100% 0 0 / 0.05) 0 1.5px, transparent 1.5px 34px),
+    repeating-linear-gradient(-45deg, oklch(100% 0 0 / 0.05) 0 1.5px, transparent 1.5px 34px),
+    radial-gradient(circle at 50% 50%, oklch(100% 0 0 / 0.06) 3px, transparent 3.5px);
+  background-size: 34px 34px, 34px 34px, 34px 34px;
+}
+
+/* ---- Serape stripe band: reused top-of-nav and above footer ---- */
+.serape {
+  height: 9px;
+  width: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--red) 0 40px,
+    var(--mustard) 40px 80px,
+    var(--cream) 80px 100px,
+    var(--green) 100px 140px,
+    var(--red-dark) 140px 160px
+  );
+}
+
 h1, h2, h3, .display {
-  font-family: 'Alfa Slab One', serif;
-  font-weight: 400;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 800;
   letter-spacing: -0.01em;
   color: var(--ink);
   line-height: 1.08;
@@ -65,7 +95,7 @@ nav {
 
 .nav-brand { display: flex; align-items: center; gap: 12px; }
 .nav-brand .badge { width: 40px; height: 40px; flex-shrink: 0; }
-.nav-brand-text { font-family: 'Alfa Slab One', serif; font-size: 17px; line-height: 1.15; color: var(--ink); }
+.nav-brand-text { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 17px; line-height: 1.15; color: var(--ink); }
 .nav-brand-text span { display: block; color: var(--mustard); font-size: 11px; letter-spacing: 0.12em; font-family: 'Archivo', sans-serif; font-weight: 700; }
 
 .nav-links { display: flex; gap: 30px; font-size: 15px; }
@@ -145,57 +175,78 @@ nav {
 
 /* ---- Channel sign panel (right side of hero) ---- */
 .sign-panel {
-  background: var(--red-shadow);
+  background: var(--red-deep);
   border: 1px solid var(--line);
   border-radius: 10px;
-  padding: 34px 20px;
+  padding: 34px 20px 26px;
   text-align: center;
   position: relative;
   overflow: hidden;
 }
-.sign-panel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 50% 20%, oklch(30% 0.04 35 / 0.6), transparent 65%);
-}
 .channel-tacos {
-  font-family: 'Alfa Slab One', serif;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 800;
   font-size: clamp(38px, 6.5vw, 58px);
-  color: var(--red);
-  letter-spacing: 0.02em;
-  text-shadow:
-    1px 1px 0 var(--red-dark),
-    2px 2px 0 var(--red-dark),
-    3px 3px 0 var(--red-dark),
-    4px 4px 0 var(--red-dark),
-    5px 5px 0 oklch(12% 0.015 35),
-    0 8px 22px rgba(0,0,0,0.55);
+  color: var(--cream);
+  letter-spacing: 0.01em;
+  text-shadow: 0 4px 0 var(--red-dark), 0 10px 18px rgba(0,0,0,0.5);
   position: relative;
   z-index: 1;
 }
 .channel-labala {
-  font-family: 'Alfa Slab One', serif;
-  font-size: clamp(20px, 3.4vw, 30px);
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 800;
+  font-size: clamp(24px, 4vw, 36px);
+  color: var(--cream);
+  letter-spacing: 0.01em;
+  margin-top: -4px;
+  text-shadow: 0 3px 0 var(--red-dark), 0 8px 16px rgba(0,0,0,0.5);
+  position: relative;
+  z-index: 1;
+}
+.channel-tagline {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 12px;
   color: var(--mustard);
-  letter-spacing: 0.06em;
-  margin-top: 4px;
-  text-shadow:
-    1px 1px 0 var(--mustard-dark),
-    2px 2px 0 var(--mustard-dark),
-    0 6px 16px rgba(0,0,0,0.5);
+  margin-top: 10px;
   position: relative;
   z-index: 1;
 }
 .sign-mascot { width: 92px; height: 92px; margin: 18px auto 0; position: relative; z-index: 1; }
 
-/* ---- Mascot badge (reused in nav/footer) ---- */
-.badge circle.face { fill: oklch(88% 0.03 70); }
-.badge .hat { fill: var(--mustard); }
-.badge .hat-shadow { fill: var(--mustard-dark); }
+.hero-mascot { width: 190px; height: 230px; margin: 18px auto 0; position: relative; z-index: 1; }
+
+/* ---- Mascot badge (reused in nav/footer): mini bullet head ---- */
+.badge .bg { fill: none; }
+.badge .bullet-body { fill: var(--silver); }
+.badge .bullet-shadow { fill: var(--silver-shadow); }
+.badge .hat { fill: var(--red); }
+.badge .hat-shadow { fill: var(--red-dark); }
 .badge .stache { fill: oklch(20% 0.01 35); }
-.badge .ring { fill: none; stroke: var(--ink); stroke-width: 2; opacity: 0.15; }
-.badge .bg { fill: var(--red); }
+.badge .eyes { fill: oklch(20% 0.01 35); }
+
+/* ---- Hero mascot: the bullet character — hat, mustache, boots, arms out with tacos ---- */
+.hero-mascot .bullet-body { fill: var(--silver); }
+.hero-mascot .bullet-shine { fill: var(--cream); opacity: 0.5; }
+.hero-mascot .bullet-case { fill: var(--mustard-dark); }
+.hero-mascot .case-line { stroke: var(--silver-shadow); stroke-width: 1.5; opacity: 0.6; }
+.hero-mascot .hat { fill: var(--red); }
+.hero-mascot .hat-shadow { fill: var(--red-dark); }
+.hero-mascot .hat-band { fill: var(--red-dark); }
+.hero-mascot .stache { fill: oklch(18% 0.01 35); }
+.hero-mascot .eyes { fill: oklch(18% 0.01 35); }
+.hero-mascot .nose { fill: var(--mustard); }
+.hero-mascot .arm { fill: var(--mustard); }
+.hero-mascot .hand { fill: var(--mustard); }
+.hero-mascot .leg { fill: var(--mustard); }
+.hero-mascot .boot { fill: var(--red); }
+.hero-mascot .boot-shadow { fill: var(--red-dark); }
+.hero-mascot .taco-shell { fill: var(--mustard-dark); }
+.hero-mascot .taco-fill { fill: var(--green); }
+.hero-mascot .taco-fill2 { fill: var(--red); }
 
 /* ---- Signature element: papel picado banner ---- */
 .picado {
@@ -221,14 +272,17 @@ nav {
     radial-gradient(circle 2.5px at 68% 44%, transparent 2px, black 2.5px),
     radial-gradient(circle 2px at 50% 58%, transparent 1.5px, black 2px);
 }
-.picado .flag:nth-child(4n+1) { background: var(--red); }
-.picado .flag:nth-child(4n+2) { background: var(--mustard); }
-.picado .flag:nth-child(4n+3) { background: oklch(88% 0.02 80); }
-.picado .flag:nth-child(4n+4) { background: var(--red-dark); }
+.picado .flag:nth-child(5n+1) { background: var(--red); }
+.picado .flag:nth-child(5n+2) { background: var(--mustard); }
+.picado .flag:nth-child(5n+3) { background: var(--cream); }
+.picado .flag:nth-child(5n+4) { background: var(--green); }
+.picado .flag:nth-child(5n+5) { background: var(--red-dark); }
 
 /* ---- Sections ---- */
 section { padding: 76px 0; }
-.section-alt { background: var(--canvas-alt); }
+.section-alt { background-color: var(--red-deep); background-image: repeating-linear-gradient(45deg, oklch(100% 0 0 / 0.045) 0 1.5px, transparent 1.5px 34px), repeating-linear-gradient(-45deg, oklch(100% 0 0 / 0.045) 0 1.5px, transparent 1.5px 34px), radial-gradient(circle at 50% 50%, oklch(100% 0 0 / 0.05) 3px, transparent 3.5px); background-size: 34px 34px, 34px 34px, 34px 34px; }
+.section-alt .section-label { color: var(--cream); }
+.section-alt .section-head p, .section-alt .info-band p { color: oklch(90% 0.03 60 / 0.85); }
 .section-panel { background: var(--panel); }
 
 .section-label {
@@ -287,7 +341,7 @@ section { padding: 76px 0; }
   text-align: center;
 }
 .info-band .big-stat {
-  font-family: 'Alfa Slab One', serif;
+  font-family: 'Baloo 2', sans-serif; font-weight: 800;
   font-size: clamp(30px, 5vw, 46px);
   color: var(--mustard);
   margin-bottom: 10px;
@@ -296,7 +350,7 @@ section { padding: 76px 0; }
 
 /* ---- CTA band ---- */
 .cta-band {
-  background: var(--mustard);
+  background: linear-gradient(120deg, var(--mustard) 0%, var(--mustard) 60%, var(--green) 60%, var(--green) 100%);
   color: var(--red-shadow);
   text-align: center;
   padding: 68px 32px;
@@ -317,7 +371,7 @@ footer {
 }
 footer .foot-brand { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px; }
 footer .foot-brand .badge { width: 26px; height: 26px; }
-footer .foot-brand span { font-family: 'Alfa Slab One', serif; font-size: 14px; color: var(--ink-soft); }
+footer .foot-brand span { font-family: 'Baloo 2', sans-serif; font-size: 14px; color: var(--ink-soft); }
 
 /* ---- Inner page header ---- */
 .page-header {
