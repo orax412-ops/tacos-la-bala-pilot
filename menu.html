@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="has-mobile-bar">
 
 <div class="serape" aria-hidden="true"></div>
 
@@ -203,6 +203,17 @@
   </div>
   Multiple Locations · Find a location near you
 </footer>
+
+<div class="mobile-bar" role="navigation" aria-label="Quick actions">
+  <a href="https://www.google.com/maps/search/Tacos+La+Bala" target="_blank" rel="noopener" class="mb-directions">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+    Directions
+  </a>
+  <a href="locations.html" class="mb-menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+    Locations
+  </a>
+</div>
 
 </body>
 </html>

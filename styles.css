@@ -1,34 +1,45 @@
-/* Tacos La Bala — Design DNA (v2, corrected to real brand)
-   Mood: authentic taqueria — deep red talavera-tile storefront wall, bold white rounded
-   logotype, a bullet-shaped mascot in a red hat and boots (the name IS "the bullet").
-   Color: true taqueria red as the dominant canvas (not a dark charcoal backdrop), mustard
-   gold + cactus green as festive accents, warm charcoal reserved for contrast panels only.
-   Type: Baloo 2 (display, chunky rounded weight — matches the real hand-painted sign
-   lettering) + Archivo (body) + JetBrains Mono (tabular price numerals only).
-   Pattern: talavera diamond-lattice texture on red sections, echoing the real storefront wall.
-   Signature element: bullet mascot (hat + mustache + boots on a bullet-shaped body, arms out
-   holding tacos) + papel picado banner dividers.
+/* Tacos La Bala — Design DNA (v3, premium modern taqueria)
+   Mood: real Houston/Mexico taqueria that dressed up for a night out — cream canvas with a
+   whisper of terracotta grain, rich signage-red and cactus-green as the two loud colors,
+   everything else quiet. Cream base is a deliberate brief requirement (not a generic pick),
+   kept distinct from the "cream + serif" AI default by pairing it with the brand's own chunky
+   rounded signage type instead of a high-contrast serif.
+   Color: cream canvas, terracotta grain texture, signage red (--red) as primary accent,
+   cactus green as secondary accent, warm ink instead of pure black.
+   Type: Baloo 2 (display, chunky rounded — matches real hand-painted sign lettering, the one
+   piece of "branded" type this business actually owns) + Archivo (body, humanist grotesque) +
+   JetBrains Mono (tabular price numerals only).
+   Layout: mobile-first hero with two-tier CTA (View Menu + Get Directions), sticky bottom
+   mobile action bar pinned for Google-Maps-originated traffic (the brief's real functional ask).
+   Signature element: the sticky mobile "Get Directions" bar + oversized illustrated bullet
+   mascot as hero focal point, standing in for food photography we don't have real assets for.
 */
 
 :root {
-  --canvas: oklch(19% 0.025 35);
-  --canvas-alt: oklch(24% 0.03 35);
-  --panel: oklch(27% 0.033 35);
-  --ink: oklch(95% 0.015 85);
-  --ink-soft: oklch(78% 0.02 80);
-  --ink-faint: oklch(62% 0.02 75);
-  --red: oklch(52% 0.19 25);
-  --red-dark: oklch(38% 0.16 25);
-  --red-deep: oklch(30% 0.15 25);
-  --red-shadow: oklch(15% 0.02 35);
-  --mustard: oklch(76% 0.15 75);
-  --mustard-dark: oklch(60% 0.15 65);
-  --green: oklch(55% 0.13 148);
-  --green-dark: oklch(40% 0.1 148);
-  --cream: oklch(95% 0.02 85);
-  --silver: oklch(88% 0.01 80);
-  --silver-shadow: oklch(72% 0.015 80);
-  --line: oklch(36% 0.03 40);
+  --cream: oklch(96% 0.018 75);
+  --cream-deep: oklch(92% 0.025 65);
+  --clay: oklch(85% 0.045 55);
+  --panel: oklch(99% 0.008 75);
+  --ink: oklch(24% 0.025 40);
+  --ink-soft: oklch(40% 0.03 40);
+  --ink-faint: oklch(55% 0.025 45);
+
+  --red: oklch(48% 0.19 25);
+  --red-dark: oklch(36% 0.16 24);
+  --red-deep: oklch(28% 0.13 24);
+  --red-shadow: oklch(16% 0.05 25);
+
+  --green: oklch(46% 0.1 152);
+  --green-dark: oklch(34% 0.085 150);
+
+  --mustard: oklch(72% 0.15 75);
+  --mustard-dark: oklch(56% 0.14 65);
+
+  --silver: oklch(90% 0.008 80);
+  --silver-shadow: oklch(74% 0.012 80);
+
+  --line: oklch(82% 0.03 55);
+  --line-on-dark: oklch(100% 0 0 / 0.14);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -38,25 +49,29 @@ html { scroll-behavior: smooth; }
 body {
   font-family: 'Archivo', sans-serif;
   background:
-    radial-gradient(circle at 1px 1px, oklch(30% 0.03 35 / 0.5) 1.4px, transparent 1.4px) 0 0/26px 26px,
-    var(--canvas);
+    radial-gradient(circle at 20% 10%, oklch(85% 0.04 55 / 0.55) 0%, transparent 45%),
+    radial-gradient(circle at 85% 30%, oklch(80% 0.05 50 / 0.4) 0%, transparent 40%),
+    repeating-radial-gradient(circle at 0 0, oklch(60% 0.03 45 / 0.05) 0, transparent 2px, transparent 4px),
+    var(--cream);
   color: var(--ink);
   line-height: 1.6;
+  padding-bottom: 0;
 }
+body.has-mobile-bar { padding-bottom: 78px; }
 
-/* ---- Talavera diamond-lattice texture, for red sections ---- */
+/* ---- Talavera diamond-lattice texture, for red/dark panels ---- */
 .talavera {
   background-color: var(--red-deep);
   background-image:
-    repeating-linear-gradient(45deg, oklch(100% 0 0 / 0.05) 0 1.5px, transparent 1.5px 34px),
-    repeating-linear-gradient(-45deg, oklch(100% 0 0 / 0.05) 0 1.5px, transparent 1.5px 34px),
-    radial-gradient(circle at 50% 50%, oklch(100% 0 0 / 0.06) 3px, transparent 3.5px);
+    repeating-linear-gradient(45deg, oklch(100% 0 0 / 0.055) 0 1.5px, transparent 1.5px 34px),
+    repeating-linear-gradient(-45deg, oklch(100% 0 0 / 0.055) 0 1.5px, transparent 1.5px 34px),
+    radial-gradient(circle at 50% 50%, oklch(100% 0 0 / 0.07) 3px, transparent 3.5px);
   background-size: 34px 34px, 34px 34px, 34px 34px;
 }
 
 /* ---- Serape stripe band: reused top-of-nav and above footer ---- */
 .serape {
-  height: 9px;
+  height: 8px;
   width: 100%;
   background: repeating-linear-gradient(
     90deg,
@@ -73,10 +88,11 @@ h1, h2, h3, .display {
   font-weight: 800;
   letter-spacing: -0.01em;
   color: var(--ink);
-  line-height: 1.08;
+  line-height: 1.06;
 }
 
 a { color: inherit; text-decoration: none; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--green); outline-offset: 2px; }
 
 .mono { font-family: 'JetBrains Mono', monospace; font-variant-numeric: tabular-nums; }
 
@@ -87,7 +103,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 22px 32px;
+  padding: 20px 32px;
   max-width: 1160px;
   margin: 0 auto;
   gap: 20px;
@@ -96,17 +112,17 @@ nav {
 .nav-brand { display: flex; align-items: center; gap: 12px; }
 .nav-brand .badge { width: 40px; height: 40px; flex-shrink: 0; }
 .nav-brand-text { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 17px; line-height: 1.15; color: var(--ink); }
-.nav-brand-text span { display: block; color: var(--mustard); font-size: 11px; letter-spacing: 0.12em; font-family: 'Archivo', sans-serif; font-weight: 700; }
+.nav-brand-text span { display: block; color: var(--red); font-size: 11px; letter-spacing: 0.12em; font-family: 'Archivo', sans-serif; font-weight: 700; }
 
 .nav-links { display: flex; gap: 30px; font-size: 15px; }
 .nav-links a { color: var(--ink-soft); transition: color 0.2s ease-out; font-weight: 600; }
-.nav-links a:hover { color: var(--mustard); }
+.nav-links a:hover { color: var(--red); }
 
 .nav-cta {
   background: var(--red);
-  color: var(--ink) !important;
+  color: var(--cream) !important;
   padding: 11px 20px;
-  border-radius: 3px;
+  border-radius: 4px;
   font-size: 14px;
   font-weight: 700;
   transition: background 0.2s ease-out, transform 0.2s ease-out;
@@ -114,14 +130,14 @@ nav {
 }
 .nav-cta:hover { background: var(--red-dark); transform: translateY(-1px); }
 
-/* ---- Hero: asymmetric 70/30, channel sign bleeds off the right ---- */
+/* ---- Hero: mobile-first stack, illustrated mascot as focal visual ---- */
 .hero {
   max-width: 1160px;
-  margin: 12px auto 0;
-  padding: 28px 32px 0;
+  margin: 4px auto 0;
+  padding: 20px 32px 0;
   display: grid;
-  grid-template-columns: 1.35fr 1fr;
-  gap: 24px;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
   align-items: center;
 }
 
@@ -130,13 +146,13 @@ nav {
   letter-spacing: 0.14em;
   font-size: 12.5px;
   font-weight: 700;
-  color: var(--mustard);
-  margin-bottom: 18px;
+  color: var(--red);
+  margin-bottom: 16px;
 }
 
 .hero-copy h1 {
-  font-size: clamp(34px, 5vw, 54px);
-  margin-bottom: 20px;
+  font-size: clamp(36px, 6vw, 56px);
+  margin-bottom: 18px;
 }
 .hero-copy h1 .accent { color: var(--red); }
 
@@ -144,41 +160,46 @@ nav {
   font-size: 17.5px;
   color: var(--ink-soft);
   max-width: 480px;
-  margin-bottom: 30px;
+  margin-bottom: 28px;
 }
 
 .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
 
 .btn-primary {
   background: var(--red);
-  color: var(--ink);
-  padding: 14px 26px;
-  border-radius: 3px;
+  color: var(--cream);
+  padding: 15px 26px;
+  border-radius: 4px;
   font-weight: 700;
   font-size: 15px;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
   transition: background 0.2s ease-out, transform 0.2s ease-out;
 }
 .btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
 
 .btn-secondary {
-  border: 1.5px solid var(--line);
-  padding: 14px 26px;
-  border-radius: 3px;
+  border: 1.5px solid var(--green);
+  background: oklch(46% 0.1 152 / 0.07);
+  padding: 15px 26px;
+  border-radius: 4px;
   font-weight: 700;
   font-size: 15px;
-  color: var(--ink);
-  display: inline-block;
-  transition: border-color 0.2s ease-out, color 0.2s ease-out;
+  color: var(--green-dark);
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  transition: background 0.2s ease-out, transform 0.2s ease-out;
 }
-.btn-secondary:hover { border-color: var(--mustard); color: var(--mustard); }
+.btn-secondary:hover { background: oklch(46% 0.1 152 / 0.14); transform: translateY(-1px); }
+.btn-secondary svg, .btn-primary svg { width: 17px; height: 17px; flex-shrink: 0; }
 
-/* ---- Channel sign panel (right side of hero) ---- */
-.sign-panel {
+/* ---- Hero visual: oversized illustrated panel (stands in for food photography) ---- */
+.hero-visual {
   background: var(--red-deep);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 34px 20px 26px;
+  border-radius: 16px;
+  padding: 36px 20px 28px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -215,9 +236,8 @@ nav {
   position: relative;
   z-index: 1;
 }
-.sign-mascot { width: 92px; height: 92px; margin: 18px auto 0; position: relative; z-index: 1; }
 
-.hero-mascot { width: 190px; height: 230px; margin: 18px auto 0; position: relative; z-index: 1; }
+.hero-mascot { width: 100%; max-width: 300px; height: auto; margin: 22px auto 0; position: relative; z-index: 1; }
 
 /* ---- Mascot badge (reused in nav/footer): mini bullet head ---- */
 .badge .bg { fill: none; }
@@ -230,7 +250,8 @@ nav {
 
 /* ---- Hero mascot: the bullet character — hat, mustache, boots, arms out with tacos ---- */
 .hero-mascot .bullet-body { fill: var(--silver); }
-.hero-mascot .bullet-shine { fill: var(--cream); opacity: 0.5; }
+.hero-mascot .bullet-outline { fill: none; stroke: oklch(18% 0.01 35 / 0.35); stroke-width: 1.4; }
+.hero-mascot .bullet-shine { fill: var(--cream); opacity: 0.55; }
 .hero-mascot .bullet-case { fill: var(--mustard-dark); }
 .hero-mascot .case-line { stroke: var(--silver-shadow); stroke-width: 1.5; opacity: 0.6; }
 .hero-mascot .hat { fill: var(--red); }
@@ -238,28 +259,31 @@ nav {
 .hero-mascot .hat-band { fill: var(--red-dark); }
 .hero-mascot .stache { fill: oklch(18% 0.01 35); }
 .hero-mascot .eyes { fill: oklch(18% 0.01 35); }
+.hero-mascot .cheek { fill: var(--red); opacity: 0.35; }
 .hero-mascot .nose { fill: var(--mustard); }
 .hero-mascot .arm { fill: var(--mustard); }
-.hero-mascot .hand { fill: var(--mustard); }
+.hero-mascot .hand { fill: var(--mustard-dark); }
 .hero-mascot .leg { fill: var(--mustard); }
 .hero-mascot .boot { fill: var(--red); }
 .hero-mascot .boot-shadow { fill: var(--red-dark); }
+.hero-mascot .boot-heel { fill: var(--red-dark); }
 .hero-mascot .taco-shell { fill: var(--mustard-dark); }
 .hero-mascot .taco-fill { fill: var(--green); }
 .hero-mascot .taco-fill2 { fill: var(--red); }
+.hero-mascot .taco-fill3 { fill: var(--cream); }
 
 /* ---- Signature element: papel picado banner ---- */
 .picado {
   display: flex;
   width: 100%;
   overflow: hidden;
-  height: 42px;
-  margin: 8px 0;
+  height: 40px;
+  margin: 4px 0;
 }
 .picado .flag {
   flex: 1 0 auto;
   width: 42px;
-  height: 42px;
+  height: 40px;
   clip-path: polygon(0 0, 100% 0, 50% 100%);
   -webkit-mask-image:
     radial-gradient(circle 3.5px at 50% 24%, transparent 3px, black 3.5px),
@@ -274,22 +298,30 @@ nav {
 }
 .picado .flag:nth-child(5n+1) { background: var(--red); }
 .picado .flag:nth-child(5n+2) { background: var(--mustard); }
-.picado .flag:nth-child(5n+3) { background: var(--cream); }
+.picado .flag:nth-child(5n+3) { background: var(--panel); border: 1px solid var(--line); }
 .picado .flag:nth-child(5n+4) { background: var(--green); }
 .picado .flag:nth-child(5n+5) { background: var(--red-dark); }
 
 /* ---- Sections ---- */
-section { padding: 76px 0; }
-.section-alt { background-color: var(--red-deep); background-image: repeating-linear-gradient(45deg, oklch(100% 0 0 / 0.045) 0 1.5px, transparent 1.5px 34px), repeating-linear-gradient(-45deg, oklch(100% 0 0 / 0.045) 0 1.5px, transparent 1.5px 34px), radial-gradient(circle at 50% 50%, oklch(100% 0 0 / 0.05) 3px, transparent 3.5px); background-size: 34px 34px, 34px 34px, 34px 34px; }
-.section-alt .section-label { color: var(--cream); }
-.section-alt .section-head p, .section-alt .info-band p { color: oklch(90% 0.03 60 / 0.85); }
-.section-panel { background: var(--panel); }
+section { padding: 72px 0; }
+.section-alt {
+  background-color: var(--red-deep);
+  background-image:
+    repeating-linear-gradient(45deg, oklch(100% 0 0 / 0.045) 0 1.5px, transparent 1.5px 34px),
+    repeating-linear-gradient(-45deg, oklch(100% 0 0 / 0.045) 0 1.5px, transparent 1.5px 34px),
+    radial-gradient(circle at 50% 50%, oklch(100% 0 0 / 0.05) 3px, transparent 3.5px);
+  background-size: 34px 34px, 34px 34px, 34px 34px;
+}
+.section-alt .section-label { color: var(--mustard); }
+.section-alt h2 { color: var(--cream); }
+.section-alt .section-head p, .section-alt .info-band p { color: oklch(94% 0.02 70 / 0.85); }
+.section-panel { background: var(--panel); border: 1px solid var(--line); }
 
 .section-label {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: 12.5px;
-  color: var(--mustard);
+  color: var(--red);
   font-weight: 700;
   margin-bottom: 12px;
 }
@@ -306,20 +338,28 @@ section { padding: 76px 0; }
 }
 .plate-featured {
   background: linear-gradient(160deg, var(--red-dark), var(--red-shadow));
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 34px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   min-height: 320px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--red-deep);
 }
 .plate-featured .tag { color: var(--mustard); font-size: 12.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px; display: block; }
-.plate-featured h3 { font-size: 24px; margin-bottom: 10px; }
-.plate-featured p { color: var(--ink-soft); font-size: 15px; }
+.plate-featured h3 { font-size: 24px; margin-bottom: 10px; color: var(--cream); }
+.plate-featured p { color: oklch(92% 0.02 70 / 0.85); font-size: 15px; }
 .plate-featured .price { color: var(--mustard); font-size: 20px; margin-top: 14px; }
 
-.plates-list { display: flex; flex-direction: column; gap: 0; }
+.plates-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 6px 24px;
+}
 .plate-row {
   display: flex;
   justify-content: space-between;
@@ -328,15 +368,15 @@ section { padding: 76px 0; }
   padding: 18px 0;
   border-top: 1px solid var(--line);
 }
-.plate-row:last-child { border-bottom: 1px solid var(--line); }
+.plate-row:first-child { border-top: none; }
 .plate-row h4 { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 16.5px; color: var(--ink); }
 .plate-row p { font-size: 13.5px; color: var(--ink-faint); margin-top: 4px; }
-.plate-row .price { color: var(--mustard); font-size: 16px; white-space: nowrap; }
+.plate-row .price { color: var(--red); font-size: 16px; white-space: nowrap; }
 
 /* ---- Info band (breakfast hours / locations) ---- */
 .info-band {
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--line-on-dark);
+  border-bottom: 1px solid var(--line-on-dark);
   padding: 46px 0;
   text-align: center;
 }
@@ -346,19 +386,19 @@ section { padding: 76px 0; }
   color: var(--mustard);
   margin-bottom: 10px;
 }
-.info-band p { color: var(--ink-soft); font-size: 15px; max-width: 520px; margin: 0 auto; }
+.info-band p { color: oklch(94% 0.02 70 / 0.85); font-size: 15px; max-width: 520px; margin: 0 auto; }
 
 /* ---- CTA band ---- */
 .cta-band {
-  background: linear-gradient(120deg, var(--mustard) 0%, var(--mustard) 60%, var(--green) 60%, var(--green) 100%);
+  background: linear-gradient(120deg, var(--mustard) 0%, var(--mustard) 58%, var(--green) 58%, var(--green) 100%);
   color: var(--red-shadow);
   text-align: center;
-  padding: 68px 32px;
-  border-radius: 10px;
+  padding: 64px 32px;
+  border-radius: 14px;
 }
 .cta-band h2 { color: var(--red-shadow); font-size: clamp(24px, 3.4vw, 34px); margin-bottom: 14px; }
-.cta-band p { color: oklch(30% 0.05 65); margin-bottom: 26px; font-size: 16px; }
-.cta-band .btn-primary { background: var(--red-shadow); color: var(--ink); }
+.cta-band p { color: oklch(28% 0.05 65); margin-bottom: 26px; font-size: 16px; }
+.cta-band .btn-primary { background: var(--red-shadow); color: var(--cream); }
 .cta-band .btn-primary:hover { background: oklch(10% 0.01 35); }
 
 /* ---- Footer ---- */
@@ -373,9 +413,36 @@ footer .foot-brand { display: flex; align-items: center; justify-content: center
 footer .foot-brand .badge { width: 26px; height: 26px; }
 footer .foot-brand span { font-family: 'Baloo 2', sans-serif; font-size: 14px; color: var(--ink-soft); }
 
+/* ---- Sticky mobile action bar: the real answer to "most visitors come from Google Maps" ---- */
+.mobile-bar {
+  display: none;
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 40;
+  background: var(--panel);
+  border-top: 1px solid var(--line);
+  padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+  gap: 10px;
+  box-shadow: 0 -6px 18px rgba(0,0,0,0.12);
+}
+.mobile-bar a {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 10px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14.5px;
+}
+.mobile-bar svg { width: 18px; height: 18px; flex-shrink: 0; }
+.mobile-bar .mb-directions { background: var(--red); color: var(--cream); }
+.mobile-bar .mb-menu { background: oklch(46% 0.1 152 / 0.12); color: var(--green-dark); border: 1.5px solid var(--green); }
+
 /* ---- Inner page header ---- */
 .page-header {
-  padding: 52px 32px 34px;
+  padding: 48px 32px 30px;
   max-width: 820px;
   margin: 0 auto;
 }
@@ -411,7 +478,7 @@ footer .foot-brand span { font-family: 'Baloo 2', sans-serif; font-size: 14px; c
   margin-left: -20px;
   padding-left: 18px;
 }
-.menu-rail a:hover { color: var(--mustard); border-color: var(--mustard); }
+.menu-rail a:hover { color: var(--red); border-color: var(--red); }
 
 .menu-section { margin-bottom: 56px; scroll-margin-top: 24px; }
 .menu-section-head { margin-bottom: 22px; }
@@ -429,7 +496,7 @@ footer .foot-brand span { font-family: 'Baloo 2', sans-serif; font-size: 14px; c
 }
 .menu-item .name { font-size: 15px; color: var(--ink); }
 .menu-item .name small { display: block; color: var(--ink-faint); font-size: 12.5px; margin-top: 2px; }
-.menu-item .price { color: var(--mustard); font-size: 14.5px; white-space: nowrap; }
+.menu-item .price { color: var(--red); font-size: 14.5px; white-space: nowrap; }
 
 .combo-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
 .combo-table th {
@@ -437,7 +504,7 @@ footer .foot-brand span { font-family: 'Baloo 2', sans-serif; font-size: 14px; c
   font-size: 12.5px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--mustard);
+  color: var(--red);
   padding: 10px 12px;
   border-bottom: 1px solid var(--line);
 }
@@ -448,11 +515,12 @@ footer .foot-brand span { font-family: 'Baloo 2', sans-serif; font-size: 14px; c
   color: var(--ink-soft);
 }
 .combo-table td:first-child { color: var(--ink); font-weight: 600; }
-.combo-table td.price { color: var(--mustard); }
+.combo-table td.price { color: var(--red); }
 
 .featured-note {
   background: var(--panel);
-  border-radius: 8px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
   padding: 20px 24px;
   font-size: 14.5px;
   color: var(--ink-soft);
@@ -469,17 +537,17 @@ footer .foot-brand span { font-family: 'Baloo 2', sans-serif; font-size: 14px; c
   padding: 0 32px;
 }
 .location-card {
-  border: 1px solid var(--line);
-  border-radius: 8px;
+  border: 1px solid var(--line-on-dark);
+  border-radius: 10px;
   padding: 30px;
-  background: var(--panel);
+  background: oklch(100% 0 0 / 0.06);
 }
-.location-card h3 { font-size: 19px; margin-bottom: 10px; }
-.location-card p { color: var(--ink-soft); font-size: 15px; }
+.location-card h3 { font-size: 19px; margin-bottom: 10px; color: var(--cream); }
+.location-card p { color: oklch(94% 0.02 70 / 0.85); font-size: 15px; }
 
 @media (max-width: 860px) {
   .hero { grid-template-columns: 1fr; }
-  .sign-panel { order: -1; }
+  .hero-visual { order: -1; }
   .plates-layout, .locations-grid { grid-template-columns: 1fr; }
   .menu-layout { grid-template-columns: 1fr; }
   .menu-rail {
@@ -495,4 +563,6 @@ footer .foot-brand span { font-family: 'Baloo 2', sans-serif; font-size: 14px; c
   .menu-rail a { margin-left: 0; padding-left: 0; padding-right: 14px; border-left: none; }
   .menu-grid { grid-template-columns: 1fr; }
   .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .mobile-bar { display: flex; }
 }

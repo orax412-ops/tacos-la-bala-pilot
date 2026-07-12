@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="has-mobile-bar">
 
 <div class="serape" aria-hidden="true"></div>
 
@@ -36,15 +36,21 @@
 
 <section class="hero">
   <div class="hero-copy">
-    <div class="hero-eyebrow">Taqueria-Style Mexican Food</div>
-    <h1>Tacos worth naming a restaurant <span class="accent">La Bala</span> after.</h1>
+    <div class="hero-eyebrow">Taqueria-Style Mexican Food · Houston Area</div>
+    <h1>The kind of tacos that get a restaurant named <span class="accent">La Bala</span>.</h1>
     <p class="sub">Breakfast plates at sunrise, tortas piled high, and a combo grid of tacos, quesadillas, gorditas, tostadas, and sopes made the way a real taqueria makes them. Multiple locations, one menu worth the drive.</p>
     <div class="hero-ctas">
-      <a href="menu.html" class="btn-primary">View Full Menu</a>
-      <a href="locations.html" class="btn-secondary">Find a Location Near You</a>
+      <a href="https://www.google.com/maps/search/Tacos+La+Bala" target="_blank" rel="noopener" class="btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        Get Directions
+      </a>
+      <a href="menu.html" class="btn-secondary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+        View Full Menu
+      </a>
     </div>
   </div>
-  <div class="sign-panel talavera">
+  <div class="hero-visual talavera">
     <div class="channel-tacos">TACOS</div>
     <div class="channel-labala">LA BALA</div>
     <div class="channel-tagline">Auténtica Comida Mexicana</div>
@@ -55,6 +61,7 @@
       <g transform="translate(-4,18) rotate(-18 12 20)">
         <path class="taco-shell" d="M2 26 Q2 6 22 6 Q26 16 22 26 Q12 34 2 26 Z"/>
         <path class="taco-fill" d="M5 22 Q12 26 19 22 Q19 18 12 18 Q6 18 5 22 Z"/>
+        <path class="taco-fill3" d="M6 19 L8 21 M10 18.5 L12 20.5 M14 18.5 L16 20.5" stroke-width="1.2" stroke="var(--cream)" fill="none"/>
         <path class="taco-fill2" d="M7 16 Q12 19 17 16" stroke-width="2" stroke="var(--red)" fill="none"/>
       </g>
       <!-- right arm + taco -->
@@ -63,6 +70,7 @@
       <g transform="translate(94,18) rotate(18 12 20) scale(-1,1) translate(-24,0)">
         <path class="taco-shell" d="M2 26 Q2 6 22 6 Q26 16 22 26 Q12 34 2 26 Z"/>
         <path class="taco-fill" d="M5 22 Q12 26 19 22 Q19 18 12 18 Q6 18 5 22 Z"/>
+        <path class="taco-fill3" d="M6 19 L8 21 M10 18.5 L12 20.5 M14 18.5 L16 20.5" stroke-width="1.2" stroke="var(--cream)" fill="none"/>
         <path class="taco-fill2" d="M7 16 Q12 19 17 16" stroke-width="2" stroke="var(--red)" fill="none"/>
       </g>
       <!-- legs + boots -->
@@ -70,15 +78,20 @@
       <rect class="leg" x="65" y="118" width="13" height="26" rx="6"/>
       <path class="boot-shadow" d="M38 140 h21 a6 6 0 0 1 6 6 v2 h-33 v-2 a6 6 0 0 1 6 -6 z"/>
       <path class="boot" d="M38 138 h21 a6 6 0 0 1 6 6 v2 h-33 v-2 a6 6 0 0 1 6 -6 z"/>
+      <path class="boot-heel" d="M38 141 v5 h6 v-5 z"/>
       <path class="boot-shadow" d="M61 140 h21 a6 6 0 0 1 6 6 v2 h-33 v-2 a6 6 0 0 1 6 -6 z"/>
       <path class="boot" d="M61 138 h21 a6 6 0 0 1 6 6 v2 h-33 v-2 a6 6 0 0 1 6 -6 z"/>
+      <path class="boot-heel" d="M61 141 v5 h6 v-5 z"/>
       <!-- bullet body -->
       <path class="bullet-body" d="M32 42 Q32 4 60 4 Q88 4 88 42 L88 108 Q88 122 60 122 Q32 122 32 108 Z"/>
+      <path class="bullet-body bullet-outline" d="M32 42 Q32 4 60 4 Q88 4 88 42 L88 108 Q88 122 60 122 Q32 122 32 108 Z"/>
       <path class="bullet-shine" d="M40 30 Q42 12 58 8 Q46 16 44 34 Z"/>
       <path class="bullet-case" d="M32 96 L88 96 L88 108 Q88 122 60 122 Q32 122 32 108 Z"/>
       <line class="case-line" x1="32" y1="103" x2="88" y2="103"/>
       <line class="case-line" x1="32" y1="111" x2="88" y2="111"/>
       <!-- face -->
+      <ellipse class="cheek" cx="45" cy="58" rx="5" ry="3.5"/>
+      <ellipse class="cheek" cx="75" cy="58" rx="5" ry="3.5"/>
       <circle class="eyes" cx="49" cy="52" r="3"/>
       <circle class="eyes" cx="71" cy="52" r="3"/>
       <path class="nose" d="M58 56 Q60 62 62 56 Q60 60 58 56 Z"/>
@@ -167,7 +180,7 @@
   <div class="container cta-band">
     <h2>Hungry now? Pull up the menu.</h2>
     <p>Breakfast, tortas, burritos, tacos, and combo plates, all in one place.</p>
-    <a href="menu.html" class="btn-primary">View Full Menu</a>
+    <a href="menu.html" class="btn-primary" style="background:var(--red-shadow);">View Full Menu</a>
   </div>
 </section>
 
@@ -187,6 +200,17 @@
   </div>
   Multiple Locations · Find a location near you
 </footer>
+
+<div class="mobile-bar" role="navigation" aria-label="Quick actions">
+  <a href="https://www.google.com/maps/search/Tacos+La+Bala" target="_blank" rel="noopener" class="mb-directions">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+    Directions
+  </a>
+  <a href="menu.html" class="mb-menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+    Menu
+  </a>
+</div>
 
 </body>
 </html>
